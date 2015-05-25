@@ -1,0 +1,23 @@
+nginx:
+  image: nginx
+  ports:
+    - "443:443"
+    - "80:80"
+  volumes:
+    - "/etc/localtime:/etc/localtime:ro"
+    - "nginx/ssl/ca:/usr/local/share/ca-certificates/:ro"
+    - "nginx/ssl/certs:/etc/ssl/certs:ro"
+    - "nginx/ssl/private:/etc/ssl/private:ro"
+    - "nginx/conf.d:/etc/nginx/conf.d:ro"
+  links:
+    - registry:registry
+
+registry:
+  image: registry
+  environment:
+    - DOCKER_REGISTRY_CONFIG=/registry/docker-registry.yml
+  volumes:
+    - "/etc/localtime:/etc/localtime:ro"
+    - "docker-registry:/registry"
+  ports:
+    - "5000"
