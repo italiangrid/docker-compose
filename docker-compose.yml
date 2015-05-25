@@ -18,6 +18,6 @@ registry:
     - DOCKER_REGISTRY_CONFIG=/registry/docker-registry.yml
   volumes:
     - "/etc/localtime:/etc/localtime:ro"
-    - "docker-registry:/registry"
+    - "./docker-registry:/registry"
   ports:
     - "5000"
