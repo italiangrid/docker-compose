@@ -1,2 +1,2 @@
 # docker-compose
-compose file for deploying services
+This component contains compose file for the deployment of services on different containers
